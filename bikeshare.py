@@ -1,7 +1,7 @@
 import time
 import pandas as pd
 import numpy as np
-
+# A dictionary containing the cities we'll want to explore
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
@@ -48,14 +48,14 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    
+
     df = pd.read_csv(CITY_DATA[city])
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
-    
+
     if month != 'all':
         months = ['january', 'february', 'march', 'april', 'may', 'june', 'july','august', 'september', 'october', 'november', 'december','all']
         month = months.index(month) + 1
@@ -63,7 +63,7 @@ def load_data(city, month, day):
 
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
-        
+
     return df
 
 
@@ -104,7 +104,7 @@ def station_stats(df):
     print(f'most commonly used end station is: {end}')
 
     # TO DO: display most frequent combination of start station and end station trip
-    combo = df['Start Station'] + ' --> ' + df['End Station'] 
+    combo = df['Start Station'] + ' --> ' + df['End Station']
     combo = combo.mode()[0]
     print(f'most frequent combination of start station and end station trip is: {combo}' )
 
@@ -160,20 +160,20 @@ def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
-        
+
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-        
+
         #Ask the user whether they would like to see the raw data
         enter = ['yes','no']
         user_input = input('Would you like to see more data? (Enter:Yes/No).\n')
-  
+
         while user_input.lower() not in enter:
             user_input = input('Please Enter Yes or No:\n')
             user_input = user_input.lower()
-        n = 0        
+        n = 0
         while True :
             if user_input.lower() == 'yes':
                 print(df.iloc[n : n + 5])
@@ -183,7 +183,7 @@ def main():
                     user_input = input('Please Enter Yes or No:\n')
                     user_input = user_input.lower()
             else:
-                break           
+                break
 
         restart = input('\nWould you like to restart? (Enter:Yes/No).\n')
         #check wheather the user is entering the valid entry or not
