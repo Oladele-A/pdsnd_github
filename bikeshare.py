@@ -1,7 +1,7 @@
 import time
 import pandas as pd
 import numpy as np
-
+# This project was done by Oladele Abimbola. Hope you find it helpful. Best regards. 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
