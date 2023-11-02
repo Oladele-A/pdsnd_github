@@ -1,7 +1,13 @@
 import time
 import pandas as pd
 import numpy as np
+<<<<<<< HEAD
 # This project was done by Oladele Abimbola. Hope you find it helpful. Best regards. 
+||||||| f439542
+
+=======
+# A dictionary containing the cities we'll want to explore
+>>>>>>> documentation
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
@@ -64,8 +70,14 @@ def load_data(city, month, day):
 
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
+<<<<<<< HEAD
 
     print('done')
+||||||| f439542
+        
+=======
+
+>>>>>>> documentation
     return df
 
 
